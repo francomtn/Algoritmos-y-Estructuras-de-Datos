@@ -1,0 +1,8 @@
+go 1.22
+
+use (
+	./guias
+	./tdas
+	./tps/tp0
+	./tps/tp1
+)
