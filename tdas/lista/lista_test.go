@@ -7,22 +7,24 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+const _VOLUMEN int = 10000
+
 // Cuando se crea una lista vacia, esta debe comportarse como tal.
 func TestListaVacia(t *testing.T) {
 	t.Log("Pruebas con lista vacia")
 	lista := TDALista.CrearListaEnlazada[bool]()
-	iteradorL := lista.Iterador()
 
 	require.True(t, lista.EstaVacia())
-
 	require.PanicsWithValue(t, "La lista esta vacia", func() { lista.VerPrimero() }, "Al ver primero de lista vacia no devuelve un panic")
-
 	require.PanicsWithValue(t, "La lista esta vacia", func() { lista.VerUltimo() }, "Al ver último en lista vacia no devuelve un panic")
-
 	require.PanicsWithValue(t, "La lista esta vacia", func() { lista.BorrarPrimero() }, "Al borrar último en lista vacia no devuelve un panic")
+}
 
+func IteradorListaVacia(t *testing.T) {
+	t.Log("Pruebas de iterador con lista vacia")
+	lista := TDALista.CrearListaEnlazada[bool]()
+	iteradorL := lista.Iterador()
 	require.PanicsWithValue(t, "El iterador termino de iterar", func() { iteradorL.Borrar() }, "Al querer borrar con iterador en lista vacia no devuelve un panic")
-
 	require.PanicsWithValue(t, "El iterador termino de iterar", func() { iteradorL.VerActual() }, "Al querer ver actual con iterador en lista vacia no devuelve un panic")
 }
 
@@ -139,8 +141,7 @@ func InsertarEnMedio(t *testing.T) {
 	require.Equal(t, elementosBase[medio-1], iteradorL.VerActual())
 }
 
-// Al remover el elemento cuando se crea el iterador, cambia el primer elemento de la lista.
-func BorrarUltimoElemento(t *testing.T) {
+func BorrarPrimerElemento(t *testing.T) {
 	t.Log("Prueba borrar el primero con el iterador y actualiza el primero de la lista")
 	lista := TDALista.CrearListaEnlazada[int]()
 	iteradorL := lista.Iterador()
@@ -156,7 +157,6 @@ func BorrarUltimoElemento(t *testing.T) {
 	require.NotEqual(t, primerElementoAntes, primerElementoDespues)
 }
 
-// Remover el último elemento con el iterador cambia el último de la lista.
 func CambiaUltimoElementoAlRemover(t *testing.T) {
 	t.Log("Prueba borrar el último con el iterador, cambia el último de la lista")
 	lista := TDALista.CrearListaEnlazada[int]()
@@ -217,11 +217,10 @@ func TestVolumenLista(t *testing.T) {
 		t.Log("Prueba de volumen con lista")
 		lista := TDALista.CrearListaEnlazada[int]()
 		require.True(t, lista.EstaVacia())
-		cant := 1000
-		for i := 0; i < cant; i++ {
+		for i := 0; i < _VOLUMEN; i++ {
 			lista.InsertarUltimo(i)
 		}
-		for i := 0; i < cant; i++ {
+		for i := 0; i < _VOLUMEN; i++ {
 			require.Equal(t, i, lista.BorrarPrimero())
 		}
 		require.True(t, lista.EstaVacia())
@@ -257,4 +256,19 @@ func TestIteradorInternoConCorte(t *testing.T) {
 		}
 		return true
 	})
+}
+
+func TestIteradorInternoSinCorte(t *testing.T) {
+
+	lista := TDALista.CrearListaEnlazada[int]()
+
+	for i := range 11 {
+		lista.InsertarUltimo(i)
+	}
+	suma := 0
+	lista.Iterar(func(v int) bool {
+		suma += v
+		return true
+	})
+	require.Equal(t, 55, suma)
 }
