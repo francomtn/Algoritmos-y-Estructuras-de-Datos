@@ -1,4 +1,4 @@
-package Diccionarios
+package diccionarios
 
 func SonIguales[K comparable, V comparable](d1, d2 Diccionario[K, V]) bool {
 

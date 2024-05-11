@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"guias/guiaDYC"
+	"guias/diccionarios"
 )
 
 func main() {
 	arreglo := [5]int{3, 4, 3, 2, 1}
-	fmt.Println((guiaDYC.PosicionPico(arreglo[:], 0, len(arreglo)-1)))
+	fmt.Println((diccionarios.ParElementosSumanK(arreglo[:], 7)))
 }
 
 // arreglo ordenado := [12]int{1,2,3,5,8,11,17,21,26,30,35,56}

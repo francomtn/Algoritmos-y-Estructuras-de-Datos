@@ -1,4 +1,4 @@
-package Diccionarios
+package diccionarios
 
 import "tdas/lista"
 

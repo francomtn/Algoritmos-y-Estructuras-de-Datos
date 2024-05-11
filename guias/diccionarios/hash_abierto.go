@@ -1,4 +1,4 @@
-package Diccionarios
+package diccionarios
 
 type parClaveValor[K comparable, V any] struct {
 	clave K

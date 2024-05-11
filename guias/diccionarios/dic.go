@@ -1,4 +1,4 @@
-package Diccionarios
+package diccionarios
 
 type Diccionario[K comparable, V any] interface {
 

@@ -1,4 +1,4 @@
-package Diccionarios
+package diccionarios
 
 type Lista[T any] interface {
 
