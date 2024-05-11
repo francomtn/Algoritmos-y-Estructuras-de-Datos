@@ -1,4 +1,4 @@
-package main
+/*package main
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 func main() {
 	arreglo := [5]int{3, 4, 3, 2, 1}
 	fmt.Println((diccionarios.ParElementosSumanK(arreglo[:], 7)))
-}
+}*/
 
 // arreglo ordenado := [12]int{1,2,3,5,8,11,17,21,26,30,35,56}
 // arreglo desordenado := [12]int{2, 6, 5, 8, 4, 9, 11, -56, 42, 0, 7, 5}
