@@ -1,5 +1,7 @@
 package abb
 
+import "tdas/lista"
+
 type DiccionarioOrdenado[K comparable, V any] interface {
 	Diccionario[K, V]
 
@@ -7,5 +9,5 @@ type DiccionarioOrdenado[K comparable, V any] interface {
 	// incluyéndolos en caso de encontrarse
 	IterarRango(desde *K, hasta *K, visitar func(clave K, dato V) bool)
 
-	Mayores(clave K) Lista[K]
+	Mayores(clave K) lista.Lista[K]
 }
