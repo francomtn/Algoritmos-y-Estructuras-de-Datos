@@ -229,7 +229,6 @@ func TestConClavesStructs(t *testing.T) {
 	require.EqualValues(t, 5, dic.Borrar(a1))
 	require.False(t, dic.Pertenece(a1))
 	require.EqualValues(t, 2, dic.Obtener(a3))
-
 }
 
 func TestClaveVacia(t *testing.T) {
