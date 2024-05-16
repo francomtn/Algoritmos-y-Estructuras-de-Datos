@@ -1,10 +1,10 @@
 package abb
 
-type ab struct {
+/*type ab struct {
 	izq  *ab
 	der  *ab
 	dato int
-}
+}*/
 
 func (arbol *ab) Altura() int {
 

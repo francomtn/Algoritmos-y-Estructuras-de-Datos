@@ -1,4 +1,4 @@
-package kmerge
+package heap
 
 type ColaPrioridad[T any] interface {
 
