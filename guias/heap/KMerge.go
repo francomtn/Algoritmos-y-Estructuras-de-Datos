@@ -1,4 +1,4 @@
-package kmerge
+package heap
 
 type compuesto struct {
 	vector   int
