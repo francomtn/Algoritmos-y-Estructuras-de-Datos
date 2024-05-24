@@ -1,8 +1,12 @@
 package heap
 
+import (
+	"tdas/cola_prioridad"
+)
+
 func Combinar(arr []int, k int) []int {
 
-	heap := CrearHeapArr[int](arr, func(a, b int) int { return b - a })
+	heap := cola_prioridad.CrearHeapArr[int](arr, func(a, b int) int { return b - a })
 
 	for heap.Cantidad() >= 2 && heap.VerMax() <= k {
 		a := heap.Desencolar()

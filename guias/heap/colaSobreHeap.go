@@ -1,5 +1,10 @@
 package heap
 
+import (
+	"tdas/cola"
+	"tdas/cola_prioridad"
+)
+
 type elemento[T any] struct {
 	dato      T
 	prioridad int
@@ -9,9 +14,9 @@ type colaSobreHeap[T any] struct {
 	contador int
 }
 
-func CrearColaSobreColaPrioridad[T any]() Cola[T] {
+func CrearColaSobreColaPrioridad[T any]() cola.Cola[T] {
 
-	return &colaSobreHeap[T]{heap: CrearHeap(func(a, b elemento[T]) int { return b.prioridad - a.prioridad })}
+	return &colaSobreHeap[T]{heap: cola_prioridad.CrearHeap(func(a, b elemento[T]) int { return b.prioridad - a.prioridad })}
 }
 
 func (cola *colaSobreHeap[T]) Encolar(dato T) {

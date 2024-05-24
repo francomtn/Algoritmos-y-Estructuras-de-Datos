@@ -1,5 +1,9 @@
 package heap
 
+import (
+	"tdas/cola_prioridad"
+)
+
 type compuesto struct {
 	vector   int
 	posicion int
@@ -8,7 +12,7 @@ type compuesto struct {
 
 func KMerge(arr [][]int) []int {
 
-	heap := CrearHeap[compuesto](func(a, b compuesto) int { return b.valor - a.valor })
+	heap := cola_prioridad.CrearHeap[compuesto](func(a, b compuesto) int { return b.valor - a.valor })
 	res := make([]int, 0)
 
 	for i, vector := range arr {
