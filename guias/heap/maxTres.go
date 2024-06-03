@@ -1,6 +1,6 @@
 package heap
 
-import "strings"
+/*-import "strings"
 
 type fcmpHeap[T any] func(T, T) int
 
@@ -11,8 +11,8 @@ type heap[T any] struct {
 }
 
 func (h heap[T]) Max3() []T {
-	
+
 	heap := CrearHeapArr[strings](h.cmp(a, b int) { return a - b	})
 
 
-}
+}*/
