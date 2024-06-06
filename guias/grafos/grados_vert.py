@@ -2,7 +2,7 @@ def grados(g):
     # devolver un diccionario string -> int
     grados = {}
     for v in g:
-	    grados[v] = len(g.adyacentes(v))	
+        grados[v] = len(g.adyacentes(v))
     return grados
 
 def grados_entrada(g):
