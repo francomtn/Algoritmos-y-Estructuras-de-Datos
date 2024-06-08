@@ -127,27 +127,7 @@ func (arbol *abb[K, V]) Obtener(clave K) V {
 
 func (arbol *abb[K, V]) Iterar(visitar func(clave K, valor V) bool) {
 
-	arbol.iteradorInterno(arbol.raiz, visitar)
-}
-
-func (arbol *abb[K, V]) iteradorInterno(nodoActual *nodoAbb[K, V], visitar func(clave K, valor V) bool) bool {
-
-	if nodoActual != nil {
-		if !arbol.iteradorInterno(nodoActual.izquierdo, visitar) {
-			return false
-		}
-
-		if !visitar(nodoActual.clave, nodoActual.dato) {
-			return false
-		}
-
-		if !arbol.iteradorInterno(nodoActual.derecho, visitar) {
-			return false
-		}
-	}
-
-	return true
-
+	arbol.IterarRango(nil, nil, visitar)
 }
 
 func (arbol *abb[K, V]) Iterador() IterDiccionario[K, V] {
@@ -206,6 +186,10 @@ func (iter *iterABB[K, V]) VerActual() (K, V) {
 
 func (arbol *abb[K, V]) IterarRango(desde *K, hasta *K, visitar func(clave K, dato V) bool) {
 
+	if arbol.raiz == nil {
+		return
+	}
+
 	if desde == nil {
 		minimo := buscarMasIzquierdo[K, V](&arbol.raiz)
 		desde = &(*minimo).clave
@@ -219,25 +203,30 @@ func (arbol *abb[K, V]) IterarRango(desde *K, hasta *K, visitar func(clave K, da
 	arbol._iterarRango(arbol.raiz, desde, hasta, visitar)
 }
 
-func (arbol *abb[K, V]) _iterarRango(nodoActual *nodoAbb[K, V], desde *K, hasta *K, visitar func(clave K, dato V) bool) {
+func (arbol *abb[K, V]) _iterarRango(nodoActual *nodoAbb[K, V], desde *K, hasta *K, visitar func(clave K, dato V) bool) bool {
 
 	if nodoActual == nil {
-		return
+		return true
 	}
 
-	if arbol.cmp(nodoActual.clave, *desde) >= 0 {
-		arbol._iterarRango(nodoActual.izquierdo, desde, hasta, visitar)
-	}
-
-	if arbol.cmp(nodoActual.clave, *desde) >= 0 && arbol.cmp(nodoActual.clave, *hasta) <= 0 {
-		if !visitar(nodoActual.clave, nodoActual.dato) {
-			return
+	if desde == nil || arbol.cmp(nodoActual.clave, *desde) >= 0 {
+		if !arbol._iterarRango(nodoActual.izquierdo, desde, hasta, visitar) {
+			return false
 		}
 	}
 
-	if arbol.cmp(nodoActual.clave, *hasta) <= 0 {
-		arbol._iterarRango(nodoActual.derecho, desde, hasta, visitar)
+	if (desde == nil || arbol.cmp(nodoActual.clave, *desde) >= 0) && (hasta == nil || arbol.cmp(nodoActual.clave, *hasta) <= 0) {
+		if !visitar(nodoActual.clave, nodoActual.dato) {
+			return false
+		}
 	}
+
+	if hasta == nil || arbol.cmp(nodoActual.clave, *hasta) <= 0 {
+		if !arbol._iterarRango(nodoActual.derecho, desde, hasta, visitar) {
+			return false
+		}
+	}
+	return true
 }
 
 func (arbol *abb[K, V]) IteradorRango(desde *K, hasta *K) IterDiccionario[K, V] {
