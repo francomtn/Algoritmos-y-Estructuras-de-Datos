@@ -1,6 +1,7 @@
 package cola_prioridad_test
 
 import (
+	"strings"
 	TDAHeap "tdas/cola_prioridad"
 	"testing"
 
@@ -10,15 +11,6 @@ import (
 const (
 	TEST_VOLUMEN int = 10000
 )
-
-func compararCadenas(cad1, cad2 string) int {
-	if cad1 < cad2 {
-		return -1
-	} else if cad1 > cad2 {
-		return 1
-	}
-	return 0
-}
 
 func compararEnteros(a, b int) int {
 	return a - b
@@ -68,7 +60,7 @@ func TestDesencolar(t *testing.T) {
 func TestHeapDeCadenas(t *testing.T) {
 
 	t.Log("Pruebas primitivas de heap de strings")
-	heap := TDAHeap.CrearHeap(compararCadenas)
+	heap := TDAHeap.CrearHeap(strings.Compare)
 	require.True(t, heap.EstaVacia())
 	require.PanicsWithValue(t, "La cola esta vacia", func() { heap.VerMax() })
 	require.PanicsWithValue(t, "La cola esta vacia", func() { heap.Desencolar() })
