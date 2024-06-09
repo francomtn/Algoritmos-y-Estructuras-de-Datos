@@ -4,10 +4,10 @@ def cantidad_componentes_debiles(grafo):
 
     nuevo = Grafo(es_dirigido=False, vertices_init= grafo.obtener_vertices())
 
-    for v in grafo:
+    for v in grafo.obtener_vertices():
         for w in grafo.adyacentes(v):
-            nuevo.agregar_arista(w, v, peso=1)
-    
+            if not nuevo.estan_unidos(v, w):
+                nuevo.agregar_arista(v, w)    
     return contar_componetes_conexas(nuevo)
 
 def contar_componetes_conexas(grafo):
