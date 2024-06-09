@@ -2,7 +2,6 @@ package cola_prioridad
 
 const (
 	CAPACIDAD_INICIAL int = 10
-	CANT_INICIAL      int = 0
 	COEF_REDIMENSION  int = 4
 	VALOR_REDIMENSION int = 2
 )
@@ -15,13 +14,13 @@ type colaConPrioridad[T any] struct {
 
 func CrearHeap[T any](funcion_cmp func(T, T) int) ColaPrioridad[T] {
 	nuevo := make([]T, CAPACIDAD_INICIAL)
-	return &colaConPrioridad[T]{datos: nuevo, cant: CANT_INICIAL, cmp: funcion_cmp}
+	return &colaConPrioridad[T]{datos: nuevo, cant: 0, cmp: funcion_cmp}
 }
 
 func CrearHeapArr[T any](arreglo []T, funcion_cmp func(T, T) int) ColaPrioridad[T] {
 	var datos []T
 	if len(arreglo) == 0 {
-		datos = make([]T, CAPACIDAD_INICIAL)
+		return CrearHeap(funcion_cmp)
 	} else {
 		datos = make([]T, len(arreglo))
 		copy(datos, arreglo)
@@ -35,7 +34,7 @@ func (heap *colaConPrioridad[T]) Cantidad() int {
 }
 
 func (heap *colaConPrioridad[T]) EstaVacia() bool {
-	return heap.cant == CANT_INICIAL
+	return heap.cant == 0
 }
 
 func (heap *colaConPrioridad[T]) VerMax() T {
@@ -82,9 +81,7 @@ func (heap *colaConPrioridad[T]) Desencolar() T {
 }
 
 func HeapSort[T any](elementos []T, funcion_cmp func(T, T) int) {
-	if len(elementos) < 2 {
-		return
-	}
+
 	heapify(elementos, funcion_cmp)
 	for i := len(elementos) - 1; i > 0; i-- {
 		swap(&elementos[0], &elementos[i])
