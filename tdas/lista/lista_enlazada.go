@@ -160,3 +160,23 @@ func (iterador *iterListaEnlazada[T]) Borrar() T {
 	iterador.lista.largo--
 	return datoBorrado
 }
+
+func (l *listaEnlazada[T]) Extend(otra *listaEnlazada[T]) {
+
+	if l.EstaVacia() {
+		nuevo := crearNodo(otra.primero.dato, nil)
+		l.primero = nuevo
+		l.ultimo = nuevo
+		otra.primero = otra.primero.siguiente
+	}
+
+	actual := l.ultimo
+	prim := otra.primero
+	for prim != nil {
+		nuevo := crearNodo(prim.dato, nil)
+		actual.siguiente = nuevo
+		prim = prim.siguiente
+		l.largo++
+	}
+	l.ultimo = prim
+}

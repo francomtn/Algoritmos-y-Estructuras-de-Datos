@@ -29,6 +29,8 @@ type Lista[T any] interface {
 
 	// Iterador  crea un iterador externo, asociado a la lista actual.
 	Iterador() IteradorLista[T]
+	// Extend() extiende la lista con todos los elementos de la otra lista que se pasa por parámetro.
+	Extend(*listaEnlazada[T])
 }
 
 type IteradorLista[T any] interface {

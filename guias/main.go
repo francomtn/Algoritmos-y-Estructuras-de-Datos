@@ -2,12 +2,16 @@ package main
 
 import (
 	"fmt"
-	"guias/heap"
+	//"guias/parcialito1"
+	"guias/guiaDYC"
 )
 
 func main() {
-	arreglo := [10]int{1, 7, 2, 8, 7, 6, 3, 3, 9, 10}
-	fmt.Println((heap.EsHeap(arreglo[:])))
+
+	arr := []int{1, 2, 3, 4, 1, 2, 3, 4}
+
+	fmt.Println(guiaDYC.Alternar(arr))
+
 }
 
 // arreglo ordenado := [12]int{1,2,3,5,8,11,17,21,26,30,35,56}
@@ -16,3 +20,32 @@ func main() {
 // 1s y 0s := [9]int{1,1,1,0,0,1,0,1,0}
 // pico := [12]int{0,1,2,3,4,5,7,5,4,3,2,1} >> 6      [9]int{2,3,4,5,6,7,6,5,4} >> 5      [9]int{2,3,4,5,4,3,2,1,0} >> 3
 // heap [ 1, 7, 2, 8, 7, 6, 3, 3, 9, 10 ]
+// mayor suma vecinos arr := {9}int[4, 8, 9, 1, 3, 6, 7, 1, 11] el par es (8, 9)
+/*
+pila := pila.CrearPilaDinamica[int]()
+	pila.Apilar(1)
+	pila.Apilar(2)
+	pila.Apilar(3)
+	pila.Apilar(4)
+	parcialito1.AgregarAlFondo(pila, 5)
+	for !pila.EstaVacia() {
+		fmt.Println(pila.Desapilar())
+	}
+
+*/
+
+/*
+helados := []Helado{
+		{"Chocolate", 5, "chocolate", true},
+		{"Vainilla", 2, "vainilla", false},
+		{"Dulce de leche", 1, "ddl", true},
+		{"Fresa", 4, "fruta", false},
+		{"Menta", 3, "menta", true},
+	}
+
+	ordenados := radixHelado(helados)
+
+	for _, helado := range ordenados {
+		fmt.Println(helado)
+	}
+*/
