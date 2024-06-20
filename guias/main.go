@@ -2,16 +2,15 @@ package main
 
 import (
 	"fmt"
-	//"guias/parcialito1"
-	"guias/guiaDYC"
+	"guias/parcialito2"
+	//"guias/guiaDYC"
 )
 
 func main() {
 
-	arr := []int{1, 2, 3, 4, 1, 2, 3, 4}
+	arr := []int{1, 5, 3, 4, 2, 8}
 
-	fmt.Println(guiaDYC.Alternar(arr))
-
+	fmt.Println(parcialito2.SumarK(arr, 3))
 }
 
 // arreglo ordenado := [12]int{1,2,3,5,8,11,17,21,26,30,35,56}

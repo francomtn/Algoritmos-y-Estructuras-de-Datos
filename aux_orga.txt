@@ -1,0 +1,61 @@
+Matriz del juego como string 7*7 49 "---OOO------OOO--- ..." (asi me dijeron xd)
+(Hardcodeo en las 4 direcciones como opciones default)
+
+
+Inicio:
+Pedir las cosas obvias
+Cargar/Nuevo
+
+si Nuevo
+->orientacion
+
+Cargar:
+se lee el archivo
+debe leer 49 bytes de la matriz y hacer un movsb a la matriz donde se va a jugar posta
+se van a leer mas cosas en ese archivo (las que se piden en los requerimientos)
+un ej: despues de los 49 bytes, se leen y se guarda, un dw que puede ser la orientacion (1,2,3,4)
+(Vean como adaptarian esto recomiendo probar antes el fread)
+
+Imprimir: (esto no es necesario explicar xd)
+
+
+Inicializar
+Se tiene entonces una matriz 7*7 bytes o mejor dicho string de 49 caracteres
+
+Juego (loop mientras ocas > 5 && zorro no atrapado):
+-Imprimir pantalla
+-pedir tecla al juegador Zorro
+--loop hasta recibir uno valido (validacion tecla) dentro de un string: teclasValidas: "QWE A D ZXC" las 8 direcciones (todo junto)        
+--loop hasta recibir uno valido   (validacion posicion) UN QUILOMBO (abajo esta todo)
+- antigua posicion -> ' '
+- se desplaza a la nueva posicion , guarda el anterior, en esa nueva coloca la 'X' y cmp con el guardado
+- si en esa posicion Oca, bifurca al zorro (otro turno mas)    
+(en ambos casos se debera actualizar el zorro a la nueva posicion)
+
+-Imprimir pantalla
+-pedir posicion al jugador Oca
+--loop hasta recibir uno valido (busca en la matriz y cmp si es el mismo simbolo) como en el ejercicio de matriz que pedia una posicion 1 3 usando sscanf 
+-pedir tecla a la OCA
+--loop hasta recibir uno valido (validacion tecla) dentro de un string: teclasValidas: "W A D" las 3 direcciones (todo junto ver cada caso dpendiendo la orientacion, en resumen varios cmp xd)        
+--loop hasta recibir uno valido (validacion posicion) -> SI O SI ' ' 
+- antigua posicion -> ' '
+- se desplaza a la nueva posicion, guarda el anterior, en esa nueva coloca la 'O' y cmp con el guardado
+
+Se debera contar en la matriz la cantidad de caracteres de Oca si siguen siendo > 5, bifurca al inicio
+Para que pierda el zorro habra que ver....
+
+Validacion posicion (Zorro)
+guardar antigua posicion
+(clasico calculo desplazamiento)
+comparar 1ro que lo nueva posicion no se invalido
+-si es "#" -> inavalido
+-si es 'O' -> se debe fijarse la siguiente en la misma direccion
+-- guardar esta posicion
+-- si es 'O' -> invalido
+-- si es '#' -> invalido
+-- si es ' ' -> valido (actualizar a ' ' las posiciones anteriores)
+-si es ' ' -> actualizar la antigua posicion a ' '
+(Hay que fijarse casos donde se sale del mapa)
+
+guardar: 
+Parecido, prueben con usar fwrite en otro lado 1ro pare entender como funca
