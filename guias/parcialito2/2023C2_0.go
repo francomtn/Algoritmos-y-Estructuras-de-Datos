@@ -22,9 +22,9 @@ func SumarK(arr []int, k int) []int {
 		nuevo[i] = -1
 	}
 	for i := k - 1; i < len(arr); i++ {
-		heap := cola_prioridad.CrearHeapArr(arr[0:i], func(a, b int) int { return a - b })
+		heap := cola_prioridad.CrearHeapArr(arr[:i+1], func(a, b int) int { return a - b })
 		suma := 0
-		//fmt.Println(arr[0:i])
+		//fmt.Println(arr[0 : i+1])
 		fmt.Println(heap)
 		for j := 0; j < k; j++ {
 			if !heap.EstaVacia() {
@@ -70,10 +70,11 @@ func DictMedio[K comparable, T any](dict diccionario.Diccionario[K, lista.Lista[
 }
 
 /*
-Crear un iterador para la lista y avanzar hasta el índice medio tiene una complejidad O(m/2), donde 
+COMPLEJIDAD:
+Crear un iterador para la lista y avanzar hasta el índice medio tiene una complejidad O(m/2), donde
 m es el número de elementos en la lista. Esto se puede simplificar a O(m).
 Guardar el dato en el nuevo diccionario es O(1).
-Dado que iteramos sobre cada clave del diccionario original una vez (O(n)) y para cada clave procesamos una lista de longitud 
+Dado que iteramos sobre cada clave del diccionario original una vez (O(n)) y para cada clave procesamos una lista de longitud
 m (O(m)), la complejidad total por clave es O(m).
 
 Por lo tanto, la complejidad temporal total del algoritmo O(n⋅m), donde:
@@ -87,19 +88,22 @@ devuelva una lista con todos los datos cuyas claves estén entre inicio y fin, q
 niveles del árbol (considerando a la raíz en nivel 1). Indicar y justificar la complejidad temporal.
 Por ejemplo, si tenemos el siguiente ABB con M = 3, inicio = 5 y fin = 15:*/
 
-
-func (ab *diccionario.DiccionarioOrdenado[K, V])obtenerDatos(inicio, fin, m int) lista.Lista[K] {
+/*func (ab *diccionario.DiccionarioOrdenado[K, V]) obtenerDatos(inicio, fin, m int) lista.Lista[K] {
 	lista := lista.CrearListaEnlazada[K]()
 	ab.obtenerDatosRec(ab.raiz, inicio, fin, m, 1, lista)
 	return lista
 }
 
-func (ab *diccionario.DiccionarioOrdenado[K, V])obtenerDatosRec(nodo *nodoAbb[K,V],inicio, fin, m, nivel int, lista lista.Lista[K]) {
+func (ab *diccionario.DiccionarioOrdenado[K, V]) obtenerDatosRec(nodo *nodoAbb[K, V], inicio, fin, m, nivel int, lista lista.Lista[K]) {
 
-	if nodo == nil {return}
-	if nivel > m { return}
+	if nodo == nil {
+		return
+	}
+	if nivel > m {
+		return
+	}
 	if ab.cmp(nodo.clave, inicio) >= 0 && ab.cmp(nodo.clave, fin) <= 0 {
-		lista.InsertarUltimo(nodo.dato)		
+		lista.InsertarUltimo(nodo.dato)
 	}
 	if ab.cmp(nodo.clave, inicio) > 0 {
 		ab.obtenerDatosRec(nodo.izq, inicio, fin, m, nivel+1, lista)
@@ -108,4 +112,4 @@ func (ab *diccionario.DiccionarioOrdenado[K, V])obtenerDatosRec(nodo *nodoAbb[K,
 		ab.obtenerDatosRec(nodo.der, inicio, fin, m, nivel+1, lista)
 	}
 }
-
+*/
