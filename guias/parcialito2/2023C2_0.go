@@ -1,7 +1,6 @@
 package parcialito2
 
 import (
-	"fmt"
 	"tdas/cola_prioridad"
 	"tdas/diccionario"
 	"tdas/lista"
@@ -24,16 +23,12 @@ func SumarK(arr []int, k int) []int {
 	for i := k - 1; i < len(arr); i++ {
 		heap := cola_prioridad.CrearHeapArr(arr[:i+1], func(a, b int) int { return a - b })
 		suma := 0
-		//fmt.Println(arr[0 : i+1])
-		fmt.Println(heap)
 		for j := 0; j < k; j++ {
 			if !heap.EstaVacia() {
 				suma += heap.Desencolar()
-
 			}
 		}
 		nuevo[i] = suma
-
 	}
 
 	return nuevo
