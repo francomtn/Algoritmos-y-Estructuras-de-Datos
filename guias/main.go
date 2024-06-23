@@ -2,15 +2,18 @@ package main
 
 import (
 	"fmt"
-	"guias/parcialito2"
+	"guias/heap"
+	//"strings"
+	//"tdas/diccionario"
 	//"guias/guiaDYC"
 )
 
 func main() {
 
-	arr := []int{1, 5, 3, 4, 2, 8}
+	arr := []string{"hola", "a", "abc", "computadora", "abcde"}
+	res := heap.CadenasLargas(arr, 3)
+	fmt.Println(res)
 
-	fmt.Println(parcialito2.SumarK(arr, 3))
 }
 
 // arreglo ordenado := [12]int{1,2,3,5,8,11,17,21,26,30,35,56}
@@ -47,4 +50,24 @@ helados := []Helado{
 	for _, helado := range ordenados {
 		fmt.Println(helado)
 	}
+*/
+/*
+	arbol := diccionario.CrearABB[string, int](strings.Compare)
+	arbol.Guardar("hola", 1)
+	arbol.Guardar("chau", 1)
+	arbol.Guardar("perro", 1)
+	arbol.Guardar("gato", 1)
+	arbol.Guardar("prueba", 1)
+	arbol.Guardar("algo", 1)
+	arbol.Guardar("estructura", 1)
+	arbol.Guardar("franco", 1)
+	arbol.Guardar("rosi", 1)
+
+	dic := arbol.IdentificarNiveles()
+
+	for iter := dic.Iterador(); iter.HaySiguiente(); iter.Siguiente() {
+		clave, valor := iter.VerActual()
+		fmt.Println(clave, valor)
+	}
+
 */

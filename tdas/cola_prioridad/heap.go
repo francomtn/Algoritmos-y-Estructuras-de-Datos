@@ -153,3 +153,35 @@ func (heap *colaConPrioridad[T]) redimensionar(nuevaCapacidad int) {
 	copy(nuevo, heap.datos)
 	heap.datos = nuevo
 }
+
+func (h *colaConPrioridad[T]) Max3() []T {
+
+	n := 3
+	if h.cant < 3 {
+		n = h.cant
+	}
+	res := make([]T, n)
+	res = append(res, h.datos[0])
+
+	h._max3(res, 0, n)
+
+	return res
+}
+func (h *colaConPrioridad[T]) _max3(res []T, ind int, n int) {
+
+	if len(res) == n {
+		return
+	}
+
+	h_izq := ind*2 + 1
+	h_der := ind*2 + 2
+
+	if h.cmp(h.datos[h_izq], h.datos[h_der]) >= 0 {
+		res = append(res, h.datos[h_izq])
+		h._max3(res, h_izq, n)
+	} else {
+		res = append(res, h.datos[h_der])
+		h._max3(res, h_der, n)
+	}
+
+}

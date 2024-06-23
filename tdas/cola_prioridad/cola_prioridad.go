@@ -18,4 +18,6 @@ type ColaPrioridad[T any] interface {
 
 	// Cantidad devuelve la cantidad de elementos que hay en la cola de prioridad.
 	Cantidad() int
+
+	Max3() []T
 }
