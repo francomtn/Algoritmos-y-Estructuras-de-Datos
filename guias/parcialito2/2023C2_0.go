@@ -83,13 +83,13 @@ devuelva una lista con todos los datos cuyas claves estén entre inicio y fin, q
 niveles del árbol (considerando a la raíz en nivel 1). Indicar y justificar la complejidad temporal.
 Por ejemplo, si tenemos el siguiente ABB con M = 3, inicio = 5 y fin = 15:*/
 
-/*func (ab *diccionario.DiccionarioOrdenado[K, V]) obtenerDatos(inicio, fin, m int) lista.Lista[K] {
-	lista := lista.CrearListaEnlazada[K]()
+func (ab *abb[K, V]) obtenerDatos(inicio, fin K, m int) lista.Lista[V] {
+	lista := lista.CrearListaEnlazada[V]()
 	ab.obtenerDatosRec(ab.raiz, inicio, fin, m, 1, lista)
 	return lista
 }
 
-func (ab *diccionario.DiccionarioOrdenado[K, V]) obtenerDatosRec(nodo *nodoAbb[K, V], inicio, fin, m, nivel int, lista lista.Lista[K]) {
+func (ab *abb[K, V]) obtenerDatosRec(nodo *nodoAbb[K, V], inicio K, fin K, m, nivel int, lista lista.Lista[V]) {
 
 	if nodo == nil {
 		return
@@ -107,4 +107,3 @@ func (ab *diccionario.DiccionarioOrdenado[K, V]) obtenerDatosRec(nodo *nodoAbb[K
 		ab.obtenerDatosRec(nodo.der, inicio, fin, m, nivel+1, lista)
 	}
 }
-*/

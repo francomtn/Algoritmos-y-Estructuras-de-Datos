@@ -1,19 +1,21 @@
 package main
 
 import (
-	"fmt"
-	"guias/heap"
 	//"strings"
 	//"tdas/diccionario"
 	//"guias/guiaDYC"
+	"fmt"
+	"tdas/diccionario"
 )
 
 func main() {
 
-	arr := []string{"hola", "a", "abc", "computadora", "abcde"}
-	res := heap.CadenasLargas(arr, 3)
-	fmt.Println(res)
-
+	arbol := diccionario.CrearABB[int, int](func(i1, i2 int) int { return i1 - i2 })
+	arbol.Guardar(2, 2)
+	arbol.Guardar(1, 1)
+	arbol.Guardar(3, 3)
+	arbol.Guardar(4, 3)
+	fmt.Println(arbol.EsCompleto())
 }
 
 // arreglo ordenado := [12]int{1,2,3,5,8,11,17,21,26,30,35,56}

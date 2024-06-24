@@ -1,5 +1,7 @@
 package parcialito2
 
+import "math"
+
 /*import (
 	"tdas/diccionario"
 	"math"
@@ -37,19 +39,18 @@ izq *ab
 der *ab
 }*/
 
-/*
-func (ab *abb[K, V])esCompleto() bool {
+func (ab *abb[K, V]) esCompleto() bool {
 
-	cantidad := ab.CantidadHijos()
-	altura := ab.Altura()
+	cantidad := ab.raiz.CantidadHijos()
+	altura := ab.raiz.Altura()
 
-	if cantidad == int(math.Pow(2, altura) - 1) {
+	if cantidad == int(math.Pow(2, float64(altura))-1) {
 		return true
 	}
 	return false
 }
 
-func (ab *abb[K,V])CantidadHijos() int {
+func (ab *nodoAbb[K, V]) CantidadHijos() int {
 
 	if ab == nil {
 		return 0
@@ -58,7 +59,7 @@ func (ab *abb[K,V])CantidadHijos() int {
 
 }
 
-func (ab *abb[K,V]) Altura() int {
+func (ab *nodoAbb[K, V]) Altura() int {
 
 	if ab == nil {
 		return 0
@@ -66,7 +67,7 @@ func (ab *abb[K,V]) Altura() int {
 	h_izq := ab.izq.Altura()
 	h_der := ab.der.Altura()
 	return maximo(h_izq, h_der) + 1
-} */
+}
 
 func maximo(a, b int) int {
 	if a > b {

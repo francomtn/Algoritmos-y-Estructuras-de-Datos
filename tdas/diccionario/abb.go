@@ -1,6 +1,7 @@
 package diccionario
 
 import (
+	"math"
 	TDAPila "tdas/pila"
 )
 
@@ -270,4 +271,42 @@ func buscarMasIzquierdo[K comparable, V any](padre **nodoAbb[K, V]) **nodoAbb[K,
 		return padre
 	}
 	return buscarMasIzquierdo(&(*padre).izquierdo)
+}
+
+func (ab *abb[K, V]) EsCompleto() bool {
+
+	cantidad := ab.raiz.CantidadHijos()
+	altura := ab.raiz.Altura()
+
+	if cantidad == int(math.Pow(2, float64(altura))-1) {
+		return true
+	}
+	return false
+}
+
+func (ab *nodoAbb[K, V]) CantidadHijos() int {
+
+	if ab == nil {
+		return 0
+	}
+	return 1 + ab.izquierdo.CantidadHijos() + ab.derecho.CantidadHijos()
+
+}
+
+func (ab *nodoAbb[K, V]) Altura() int {
+
+	if ab == nil {
+		return 0
+	}
+	h_izq := ab.izquierdo.Altura()
+	h_der := ab.derecho.Altura()
+	return maximo(h_izq, h_der) + 1
+}
+
+func maximo(a, b int) int {
+	if a > b {
+		return a
+	} else {
+		return b
+	}
 }
