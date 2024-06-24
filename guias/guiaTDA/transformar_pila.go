@@ -1,5 +1,10 @@
 package guiaTDA
 
+type pilaDinamica[T any] struct {
+	datos    []T
+	cantidad int
+}
+
 func (pila *pilaDinamica[T]) Transformar(aplicar func(T) T) *pilaDinamica[T] {
 	// para crear una nueva pila en este ejercicio usar, según la capacidad deseada:
 	// nueva := &pilaDinamica[T]{make([]T, capacidadDeseada), capacidadDeseada}

@@ -78,9 +78,10 @@ func (abb *abb[K, int]) modificar(nodo *nodoAbb[K, int]) int {
 	}
 
 	if nodo.izq == nil && nodo.der == nil {
-		return nodo.dato
+		return nodo.dato // Es una hoja
 	}
 
+	// Recorrido post-order:
 	izq := abb.modificar(nodo.izq)
 	der := abb.modificar(nodo.der)
 	nodo.dato = izq + der
