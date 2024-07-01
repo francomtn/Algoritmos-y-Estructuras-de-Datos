@@ -4,22 +4,41 @@ package guiaDYC
 //(todos los elementos se encuentran ordenados, salvo uno), obtenga el elemento fuera de lugar. Indicar y justificar el orden.
 
 func ElementoDesordenado(arr []int) int {
+	if arr[0] > arr[1] {
+		return arr[0]
+	}
 	return obtenerElemento(arr, 0, len(arr)-1)
 }
 
 func obtenerElemento(arr []int, ini, fin int) int {
+	if ini == fin {
+		return -1
+	}
 
-	if ini > fin {
-		return arr[ini]
+	if ini+1 == fin {
+		if arr[ini] > arr[fin] {
+			return arr[ini]
+		}
+		return -1
 	}
+
 	medio := (ini + fin) / 2
+
+	// Verificar si el elemento desordenado está en el punto medio
 	if arr[medio] < arr[medio-1] {
-		return arr[medio-1]
-	} else if arr[medio-1] < arr[medio] {
-		return obtenerElemento(arr, medio+1, fin)
-	} else {
-		return obtenerElemento(arr, ini, medio-1)
+		return arr[medio]
+	} else if arr[medio] > arr[medio+1] {
+		return arr[medio+1]
 	}
+
+	// Buscar en la mitad izquierda
+	izq := obtenerElemento(arr, ini, medio)
+	if izq != -1 {
+		return izq
+	}
+
+	// Buscar en la mitad derecha
+	return obtenerElemento(arr, medio+1, fin)
 }
 
 /*func ElementoDesordenado(arr []int) int {

@@ -1,4 +1,4 @@
-from grafo import Grafo
+from tdas.grafo import Grafo
 from collections import deque
 
 

@@ -1,4 +1,4 @@
-from grafo import Grafo
+from tdas.grafo import Grafo
 
 def grafo_traspuesto(grafo):
     'Devolver el nuevo Grafo'

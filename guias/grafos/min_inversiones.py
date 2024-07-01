@@ -1,4 +1,4 @@
-from grafo import Grafo
+from tdas.grafo import Grafo
 import heapq
 
 def minimas_inversiones(grafo, s, t):

@@ -1,5 +1,7 @@
 from grafos.cola import Cola
 import heapq
+from tdas.grafo import Grafo
+
 
 """
 1. Implementar una función que reciba un grafo dirigido y acíclico y determine si dicho grafo admite un único orden
