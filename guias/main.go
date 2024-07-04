@@ -2,16 +2,15 @@ package main
 
 import (
 	"fmt"
-	//"guias/guiaDYC"
 	//"tdas/diccionario"
 
-	"guias/heap"
+	"guias/guiaDYC"
 )
 
 func main() {
 
-	arr := []int{3, 4, 2, 1}
-	fmt.Println(heap.Reducir(arr))
+	arr := []int{5, 8, 14, 17, 20, 23}
+	fmt.Println(guiaDYC.SucesionAritmetica(arr))
 
 }
 
