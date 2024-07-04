@@ -1,17 +1,18 @@
 package main
 
 import (
-	//"strings"
-	//"tdas/diccionario"
 	"fmt"
-	"guias/guiaDYC"
+	//"guias/guiaDYC"
 	//"tdas/diccionario"
+
+	"guias/heap"
 )
 
 func main() {
 
-	arr := []int{1, 2, 3, 4, 1, 2, 3, 4}
-	fmt.Println(guiaDYC.Alternar(arr))
+	arr := []int{3, 4, 2, 1}
+	fmt.Println(heap.Reducir(arr))
+
 }
 
 // arreglo ordenado := []int{1,2,3,5,8,11,17,21,26,30,35,56}

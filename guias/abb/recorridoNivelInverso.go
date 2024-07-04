@@ -8,19 +8,19 @@ func (arbol *abb[K, V]) NivelesInverso(visitar func(clave K, dato V) bool) {
 		return
 	}
 
-	cola := l.CrearListaEnlazada[*abb[K, V]]()
-	pila := l.CrearListaEnlazada[*abb[K, V]]()
+	cola := l.CrearListaEnlazada[*nodoAbb[K, V]]()
+	pila := l.CrearListaEnlazada[*nodoAbb[K, V]]()
 
-	cola.InsertarUltimo(arbol)
+	cola.InsertarUltimo(arbol.raiz)
 	for !cola.EstaVacia() {
 		dato := cola.BorrarPrimero()
 		pila.InsertarUltimo(dato)
 
-		if arbol.der != nil {
-			cola.InsertarUltimo(dato.der)
+		if dato.derecho != nil {
+			cola.InsertarUltimo(dato.derecho)
 		}
-		if arbol.izq != nil {
-			cola.InsertarUltimo(dato.izq)
+		if dato.izquierdo != nil {
+			cola.InsertarUltimo(dato.izquierdo)
 		}
 	}
 
