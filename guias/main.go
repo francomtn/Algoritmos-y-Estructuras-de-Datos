@@ -2,16 +2,71 @@ package main
 
 import (
 	"fmt"
-	//"tdas/diccionario"
-
-	"guias/guiaDYC"
 )
 
 func main() {
+	equipos := []Equipos{
+		{"Olimpo", 4},
+		{"Boca", 0},
+		{"Almagro", 3},
+		{"Rosario Central", 4},
+		{"Banfield", 8},
+		{"Sarmiento", 2},
+		{"Defensa y Justicia", 0},
+		{"Platense", 3},
+		{"River", 1},
+		{"Independiente", 1},
+		{"Estudiantes LP", 2},
+		{"Racing", 1},
+		{"Tigre", 8},
+		{"Velez", 1},
+		{"Atlanta", 4},
+		{"Gimnasia LP", 5},
+	}
 
-	arr := []int{5, 8, 14, 17, 20, 23}
-	fmt.Println(guiaDYC.SucesionAritmetica(arr))
+	fmt.Println("Equipos antes del ordenamiento:")
+	for _, equipo := range equipos {
+		fmt.Printf("%s (%d) - ", equipo.nombre, equipo.cantidad)
+	}
+	fmt.Println()
 
+	equiposOrdenados := OrdenarEquipos(equipos)
+
+	fmt.Println("\nEquipos después del ordenamiento:")
+	for _, equipo := range equiposOrdenados {
+		fmt.Printf("%s (%d) - ", equipo.nombre, equipo.cantidad)
+	}
+	fmt.Println()
+}
+
+type Equipos struct {
+	nombre   string
+	cantidad int
+}
+
+func OrdenarEquipos(arr []Equipos) []Equipos {
+
+	maxDescensos := 0
+	for _, equipo := range arr {
+		if equipo.cantidad > maxDescensos {
+			maxDescensos = equipo.cantidad
+		}
+	}
+
+	buckets := make(map[int][]Equipos)
+
+	for i := range maxDescensos {
+		buckets[i] = []Equipos{}
+	}
+	for _, equipo := range arr {
+		cant := equipo.cantidad
+		buckets[cant] = append(buckets[cant], equipo)
+	}
+	resultado := []Equipos{}
+	for i := 0; i <= maxDescensos; i++ {
+		resultado = append(resultado, buckets[i]...)
+	}
+	return resultado
 }
 
 // arreglo ordenado := []int{1,2,3,5,8,11,17,21,26,30,35,56}

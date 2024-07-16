@@ -23,7 +23,7 @@ def dfs_cfcs(grafo, v, visitados, orden, m_b, pila, apilados, cfcs, contador):
             nueva_cfc = []
             while True:
                 w = pila.desapilar()
-                apilados.add(w)
+                apilados.remove(w)
                 nueva_cfc.append(w)
                 if w == v:
                     break

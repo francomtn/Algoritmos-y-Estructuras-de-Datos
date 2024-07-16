@@ -7,7 +7,14 @@ type ab struct {
 	dato  int
 }
 
-func ReconstruirParticular(preOrder, inOrder string) *ab {
+func ReconstruirParticular() *ab {
+	PRE_ORDER := "EURMAONDVSZT"
+	IN_ORDER := "MRAUOZSVDNET"
+	ab := _reconstruir(PRE_ORDER, IN_ORDER)
+	return ab
+}
+
+func _reconstruir(preOrder, inOrder string) *ab {
 
 	if len(preOrder) == 0 || len(inOrder) == 0 {
 		return nil
@@ -15,8 +22,8 @@ func ReconstruirParticular(preOrder, inOrder string) *ab {
 	ab := &ab{clave: string(preOrder[0])}
 
 	indInOrder := buscarIndice(inOrder, ab.clave)
-	ab.izq = ReconstruirParticular(preOrder[1:indInOrder+1], inOrder[:indInOrder])
-	ab.der = ReconstruirParticular(preOrder[indInOrder+1:], inOrder[indInOrder+1:])
+	ab.izq = _reconstruir(preOrder[1:indInOrder+1], inOrder[:indInOrder])
+	ab.der = _reconstruir(preOrder[indInOrder+1:], inOrder[indInOrder+1:])
 	return ab
 }
 

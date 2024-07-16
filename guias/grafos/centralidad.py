@@ -7,7 +7,7 @@ def centralidad(grafo):
         for w in grafo:
             if v == w:
                 continue
-            padres, distancias = camino_minimo(grafo, v, w)
+            padres, distancias = camino_minimo_dijkstra(grafo, v, w)
             if padres[w] is None:
                 continue
             actual = padres[w]
@@ -20,7 +20,7 @@ def mas_centrales(grafo):
     ciudades = centralidad(grafo)
     return sorted(ciudades)
 
-def camino_minimo(grafo, origen, destino):
+def camino_minimo_dijkstra(grafo, origen, destino):
     dist = {}
     padre = {}
     for v in grafo:
@@ -40,3 +40,26 @@ def camino_minimo(grafo, origen, destino):
                 padre[w] = v
                 heapq.heappush(q,(dist[w], w))
     return padre, dist
+
+# para grafos no pesados
+from cola import Cola
+
+def camino_minimo_bfs(grafo, origen, destino):
+   
+   distancia, padre, visitado = {v: float("inf") for v in grafo}, {}, {}
+   distancia[origen] = 0
+   padre[origen] = None
+   visitado[origen] = True
+   q = Cola()
+   q.encolar((0, origen))
+   while not q.esta_vacia():
+       dist, v = q.desencolar()
+       if v == destino:
+            return padre, dist
+       for w in grafo.adyacentes(v):
+           if (v not in visitado):
+               distancia[w] += distancia[v] + 1
+               padre[w] = v
+               visitado[w] = True
+               q.encolar((distancia[w], w))
+   return padre, distancia

@@ -5,9 +5,9 @@ type dicAddAll[K comparable] struct {
 	addSum int
 }
 
-func CrearDicAddAll[K comparable]() DiccionarioAddAll[K] {
+/*func CrearDicAddAll[K comparable]() DiccionarioAddAll[K] {
 	return &dicAddAll[K]{dic: CrearHash[K, int](), addSum: 0}
-}
+}*/
 
 func (dic *dicAddAll[K]) Guardar(clave K, valor int) {
 	dic.dic.Guardar(clave, valor-dic.addSum)

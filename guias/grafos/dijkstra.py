@@ -20,3 +20,5 @@ def camino_minimo_dijkstra(grafo, origen, destino):
                 padre[w] = v
                 heapq.heappush(q,(dist[w], w))
     return padre, dist
+
+# O(E log V)

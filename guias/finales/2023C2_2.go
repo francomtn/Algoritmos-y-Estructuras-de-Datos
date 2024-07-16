@@ -65,7 +65,7 @@ RTA: Para que la complejidad sea mejor que O(n log n), el algoritmos NO puede se
 tendria que ser un algoritmo no comparativo como lo es counting, radix o bucket sort. Para poder
 usar este algotimo tendriamos que saber informacion adicional.
 Podria ser utilizado como ordenamiento auxiliar de radix independioentemente de si la afirmacion es correcta o no.
-Lo onico de cambiaria es la complejidad final del algoritmo que se use para ordenar, que seria la resultyante de usar
+Lo unico de cambiaria es la complejidad final del algoritmo que se use para ordenar, que seria la resultante de usar
 radix con MessiSort
 
 por gpt:

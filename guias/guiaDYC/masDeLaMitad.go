@@ -1,6 +1,11 @@
 package guiaDYC
 
 func MasDeLaMitad(arr []int) bool {
+
+}
+
+/*
+func MasDeLaMitad(arr []int) bool {
 	if len(arr) == 0 {
 		return false
 	}
@@ -54,3 +59,4 @@ func contador(arr []int, num int) int {
 	}
 	return count
 }
+*/
