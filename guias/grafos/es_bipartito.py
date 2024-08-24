@@ -25,21 +25,22 @@ def es_bipartito_aux(grafo, vert_inicial):
     return True
 
 def es_bipartito(grafo):
-	colores = { }
-	for vertice in grafo.obtener_vertices():
-		if vertice not in colores:
-			if not _es_bipartito(grafo, vertice, colores):
-				return False
-	return True
-
-def _es_bipartito(grafo, v, colores):
-
-    for w in grafo.adyacentes(v):
-        if w in colores:
-            if colores[w] == colores[v]:
+    valores = {}
+    
+    for vertice in grafo.obtener_vertices():
+        if vertice not in valores:
+            valores[vertice] = 0 
+            if not _es_bipartito(grafo, vertice, valores):
                 return False
+    return True
+
+def _es_bipartito(grafo, v, valores):
+    for w in grafo.adyacentes(v):
+        if w in valores:
+            if valores[w] == valores[v]:
+                return False  
         else:
-            colores[w] = 1 - colores[v]
-            if not _es_bipartito(grafo, w, colores):
+            valores[w] = 1 - valores[v]  
+            if not _es_bipartito(grafo, w, valores):
                 return False
     return True
