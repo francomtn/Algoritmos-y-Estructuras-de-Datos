@@ -1,6 +1,6 @@
 # Algoritmos-y-Estructuras-de-Datos
 ## curso Buchwald   
-Pila: B+
+Pila: B+  
 Cola: MB-  
 Lista: MB+  
 Hash: MB+  
