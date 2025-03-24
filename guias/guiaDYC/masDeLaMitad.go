@@ -1,7 +1,7 @@
 package guiaDYC
 
 func MasDeLaMitad(arr []int) bool {
-
+	return true
 }
 
 /*
